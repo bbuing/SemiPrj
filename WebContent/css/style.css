@@ -1,0 +1,59 @@
+a {
+	color: #FF8C00;
+}
+a:hover, a:focus, a:visited {
+	color: 	#FF4500;
+}
+
+.h_box {
+  position: relative;
+  height: 150px;
+  display: block;
+  background: #f0f0f0;
+  margin: 0 20px 20px 20px;
+}
+
+.h_navbar_extended {
+  height : 300px
+}
+
+.h_notice {
+  margin-top: 8px;
+}
+
+.h_inner_container {
+  margin: 20px;
+}
+
+.h_hidden_search {
+	clear: both;
+	display: none;
+}
+
+.h_show_search {
+	display: block;
+}
+
+.ui.cards > .card > .h_profile_img > img,
+.ui.card > .h_profile_img > img {
+  display: block;
+  width: 130px;
+  height: 130px;
+  border-radius: 80px;
+  position: absolute;
+  margin-left: 50%;
+  left: -65px;
+  top: 120px;
+}
+.ui.cards > .card > .content > .header:not(.ui).h_profile_header, 
+.ui.card > .content > .header:not(.ui).h_profile_header {
+	margin-top: 60px;
+	text-align: center;
+}
+.ui.cards > .card > .content > .meta + .description.h_profile_description, 
+.ui.cards > .card > .content > .header + .description.h_profile_description, 
+.ui.card > .content > .meta + .description.h_profile_description, 
+.ui.card > .content > .header + .description.h_profile_description {
+	text-align: center;
+	margin-bottom: 10px;
+}

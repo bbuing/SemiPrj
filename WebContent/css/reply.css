@@ -1,0 +1,80 @@
+.reply-header {
+	border-bottom: 1px solid #ebe7e8;
+	padding: 15px 0 13px 32px;
+}
+
+.reply-header .reply-title {
+	font-size: 1.3em;
+	font-weight: 600;
+}
+
+.reply-context {
+	width: 100%;
+	list-style: none;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	/*float: left;*/
+	height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.reply-context li {
+	position: relative;
+}
+
+.reply-context .reply-section {
+	float: left;
+	padding: 15px 8px 17px 30px;
+	border-bottom: 1px solid #ebe7e8;
+	width: 100%;
+}
+
+.reply-context .reply-section .reply-info {
+	float: left;
+	width: 88%;
+	display: inline-block;
+}
+
+.reply-profile {
+	float: left;
+	display: inline-block;
+	cursor: pointer;
+	margin: 0 10px 4px 0;
+}
+.reply-context ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.reply-context .reply-section .reply-info .reply-user {
+	font-size: 1.2em;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+
+.reply-context .reply-section .reply-info .reply-content {
+	margin-bottom: 10px;
+}
+
+.reply-context .reply-section  .reply-info .reply-date {
+	color: #8c8c8c;
+}
+
+.reply-form {
+	background-color: #ebe7e8;
+	padding: 15px 0 13px 30px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+.reply-form .reply-form-inner .reply-form-profile {
+	display: inline-block;
+	margin-right: 4px;
+}
+.reply-form .reply-form-inner form {
+	display: inline-block;
+}
+.reply-form .reply-form-inner form input[type="text"] {
+	width: 550px;
+}
