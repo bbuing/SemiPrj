@@ -19,6 +19,15 @@
 .body {
 	margin-top: 80px
 }
+.icon_like{
+   width:15px;
+   height:15px;
+}
+.icon_tag{
+   margin-right:30px;
+   width:25px;
+   height:25px;
+}
 </style>
 </head>
 <body>
