@@ -10,7 +10,7 @@ $(document).ready(
 		
 			var lastId; //마지막에 있을 구역
 			var	topMenu = $("#top-menu"); //상단에 카드타입들을 모아둔 메뉴
-			var	topMenuHeight = topMenu.outerHeight() + 290; //헤더와 메뉴만큼 더해준값을 맨 상단으로 친다
+			var	topMenuHeight = topMenu.outerHeight() + 270; //헤더와 메뉴만큼 더해준값을 맨 상단으로 친다
 			var menuItems = topMenu.find("a"); // 상단 카드 타입 각 버튼
 			var cardItems = $(".narrative-section"); //현재 보여지는 vertical-narrative-section
 			

@@ -27,7 +27,7 @@
 						<section>
 							<div
 								class="display-context-section image-section">
-								<img src="${add.add_content }" />
+								<img src="upload/${add.add_content }" />
 								<div class="text-content add-img" dir="auto">${add.add_title }</div>
 							</div>
 						</section>

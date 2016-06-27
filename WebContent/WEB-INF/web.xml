@@ -48,4 +48,22 @@
 		<servlet-name>join</servlet-name>
 		<url-pattern>/customer.do</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>getLike</servlet-name>
+		<servlet-class>controller.getLikeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getLike</servlet-name>
+		<url-pattern>/getLike.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>like</servlet-name>
+		<servlet-class>controller.likeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>like</servlet-name>
+		<url-pattern>/like.do</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -61,6 +61,10 @@ public class ReadDao {
 				dto.setBoard_header(boardRs.getString("board_header"));
 				dto.setBoard_period(boardRs.getString("board_period"));
 				dto.setBoard_tag(boardRs.getString("board_tag"));
+				dto.setBoard_region(boardRs.getString("board_region"));
+				dto.setBoard_transport(boardRs.getString("board_transport"));
+				dto.setBoard_stay(boardRs.getString("board_stay"));
+				dto.setBoard_theme(boardRs.getString("board_theme"));
 				dto.setBoard_click(boardRs.getString("board_click"));
 				dto.setBoard_like(boardRs.getString("board_like"));
 				// card ��������
@@ -72,8 +76,8 @@ public class ReadDao {
 					int card_num = Integer.parseInt(cardRs.getString("card_num"));
 
 					CardDto cardDto = new CardDto();
-					cardDto.setCard_num(Integer.toString(card_num));
 					cardDto.setCard_index(board_card_cnt);
+					cardDto.setCard_num(Integer.toString(card_num));
 					cardDto.setCard_type(cardRs.getString("card_type"));
 					cardDto.setCard_title(cardRs.getString("card_title"));
 					cardDto.setCard_content(cardRs.getString("card_content"));
@@ -118,7 +122,6 @@ public class ReadDao {
 					}
 					cardDto.setCard_reply_cnt(card_reply_cnt);
 				}
-
 				
 			}
 
@@ -158,7 +161,7 @@ public class ReadDao {
 			
 			pstmt.executeUpdate();
 		} catch (Exception err) {
-			System.out.println("read  : " + err);
+			System.out.println("setReply  : " + err);
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
@@ -167,40 +170,57 @@ public class ReadDao {
 		return dto;
 	}
 	
-	public ReadDto clickLike(ReadDto dto) {
+	public String getLike(String board_num) {
+		String likeSql = "SELECT board_like FROM boardTbl WHERE board_num=" + board_num;
+		String board_like = null;
+		
+		
 		try {
 			pool = DBConnectionMgr.getInstance();
-		} catch (Exception err) {
-			System.out.println("DB ���ᰴü ���� ���� : " + err);
-		}
-
-		String card_num = null;
-		
-		String boardSql = "INSERT INTO replyTbl (card_num, board_num, user_id, reply_user_id, reply_content, reply_date) VALUES " 
-				+ "(?, ?, ?, ?, ?, now())";
-/*
-		try {
-			
 			con = pool.getConnection();
-			card_num = replyDto.getCard_num();
-			//card_index = dto.getCardList().get(card_index);
-			// board ��������
-			pstmt = con.prepareStatement(boardSql);
-			
-			pstmt.setString(1, card_num);
-			pstmt.setString(2, replyDto.getBoard_num());
-			pstmt.setString(3, replyDto.getUser_id());
-			pstmt.setString(4, replyDto.getReply_user_id());
-			pstmt.setString(5, replyDto.getReply_content());
-			
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(likeSql);
+			//pstmt.setString(1, board_num);
+			System.out.println(likeSql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				board_like = rs.getString("board_like");
+			}
 		} catch (Exception err) {
-			System.out.println("read  : " + err);
+			System.out.println("getLike  : " + err);
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		
-		dto.getCardList().get(card_index).setReplyList(replyDto);*/
-		return dto;
+		return board_like;
+	}
+	
+	public void setLike(String board_num, String user_id, String board_like) throws NumberFormatException {
+		System.out.println(board_like);
+		int likeCnt = Integer.parseInt(board_like);
+		likeCnt ++;
+		
+		System.out.println("dao.setLike");
+		
+		try {
+			pool = DBConnectionMgr.getInstance();
+			con = pool.getConnection();
+			
+			String likeTblSql = "INSERT INTO likeTbl (user_id, user_like_board) VALUES (?, ?)";
+			pstmt = con.prepareStatement(likeTblSql);
+			pstmt.setString(1, user_id);
+			pstmt.setString(2, board_num);
+			pstmt.executeUpdate();
+			
+			String boardTblSql = "UPDATE boardTbl SET board_like=? WHERE board_num=?";
+			pstmt = con.prepareStatement(boardTblSql);
+			pstmt.setInt(1, likeCnt);
+			pstmt.setString(2, board_num);
+			pstmt.executeUpdate();
+		} catch (Exception err) {
+			System.out.println("setLike  : " + err);
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		
 	}
 }
