@@ -232,12 +232,9 @@ public class customerDao {
 				emp.setUser_hearder(rs.getString("user_hearder"));
 				emp.setUser_id(rs.getString("user_id"));
 			}
-			rs.close();
-			pstmt.close();
-			conn.close();
 		} catch (Exception e) {
 			System.out.println("로그인 실패 : " + e);
-		}
+		} finally{if(pool != null) pool.freeConnection(conn, pstmt, rs);}
 	return emp;
 	}
 	// 내가 작성한 글 찾기, 작성한 글이 몇개가 있을지 모르기 때문에 벡터로 받아옴

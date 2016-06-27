@@ -13,7 +13,6 @@ public class customerWrite implements Command{
 		customerDto dto = (customerDto)req.getSession().getAttribute("list");
 		String user_id = dto.getUser_id();
 		req.setAttribute("user_id", user_id);
-		System.out.println("customerWrite : " + user_id);
 		return "/WEB-INF/views/customer/Write.jsp";
 	}
 }

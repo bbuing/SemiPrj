@@ -66,10 +66,10 @@
 				</div>
 				<div class="form-group">
 					<!-- 각각의 타입들을 내부의 class의 숫자는 addIndex -->
-					<form id="upload" action="customer.do" method="POST" enctype="multipart/form-data">
+					<form id="upload" action="write.do" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="param" value="save" />
 						<input type="file" id="title_img" name="title_img" style="display: none"/>
-						<input type="hidden" name="user_id" value='<%= request.getParameter("user_id")%>' />
+						<input type="hidden" name="user_id" value='<%= request.getAttribute("user_id")%>' />
 						<input type="hidden" id="title_img_name" name="title_img_name" />
 						<input class="form-control input-lg" type="text" size="60" name="title" placeholder="타이틀을 넣어주세요" /><br/><br/>
 						<input class="form-control input-lg" type="text" size="60" name="date" placeholder="여행 기간 입력" /><br/><br/>

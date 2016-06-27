@@ -48,4 +48,13 @@
 		<servlet-name>join</servlet-name>
 		<url-pattern>/customer.do</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>write</servlet-name>
+		<servlet-class>controller.WriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>write</servlet-name>
+		<url-pattern>/write.do</url-pattern>
+	</servlet-mapping>
 </web-app>

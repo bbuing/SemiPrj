@@ -148,7 +148,7 @@ public class BoardDao {
        * daoSearch_theme + ")&&" + "(" + daoSearch_transport + ")&&" + "(" +
        * daoSearch_accommodation + "))";
        */
-      System.out.println(sql);
+      //System.out.println(sql); // 최종 선택된 sql문 출력
 
       try {
          pool = DBConnectionMgr.getInstance();
@@ -189,11 +189,8 @@ public class BoardDao {
             dto.setSearch_header(search_header);
             dto.setBoard_click(board_click);
             dto.setBoard_like(board_like);
-            
-            
 
             board.add(dto);
-
          }
       } catch (Exception err) {
          System.out.println("실패 :" + err);
