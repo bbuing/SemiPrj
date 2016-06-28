@@ -62,9 +62,33 @@ public class customerDao {
 			pstmt.executeUpdate();
 			pstmt.close();
 			conn.close();
+			
 		} catch (Exception err) {
 			System.out.println("가입 실패 : " + err);
 		} 
+			try {
+				pool=DBConnectionMgr.getInstance();
+	            conn= pool.getConnection();
+	            String sql = "select user_id from userTbl where user_email=?";
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setString(1, emp.getUser_email());
+	            ResultSet rs = pstmt.executeQuery();
+				while (rs.next()) {
+					emp.setUser_id(rs.getString("user_id"));
+				}
+				rs.close();
+	            String sql2 = "insert into userNickTbl(user_id, user_nick, user_profile) values(?,?,?)";
+	    		pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, emp.getUser_id());
+				pstmt.setString(2, emp.getUser_nick());
+				pstmt.setString(3, nodata);
+				pstmt.executeUpdate();
+				pstmt.close();
+				conn.close();
+				
+			} catch (Exception err) {
+				System.out.println("닉네임 테이블 가입 실패 : " + err);
+			} 
 		return null;
 	}
 	//개인정보수정 위해 개인정보 불어오기
@@ -123,6 +147,28 @@ public class customerDao {
 			conn.close();
 		} catch (Exception err) {
 			System.out.println("정보 수정 실패 : " + err);
+		} 	try {
+			pool=DBConnectionMgr.getInstance();
+            conn= pool.getConnection();
+            String sql = "select user_id from userTbl where user_email=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, emp.getUser_email());
+            ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				emp.setUser_id(rs.getString("user_id"));
+			}
+			rs.close();
+			String sql2 = "update userNickTbl set user_nick = ?, user_profile = ? where user_id=?";
+            pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, emp.getUser_nick());
+			pstmt.setString(2, emp.getUser_profile());
+			pstmt.setString(3, emp.getUser_id());
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception err) {
+			System.out.println("닉네임 테이블 수정 실패 : " + err);
 		} 
 	return emp;
 	}
@@ -265,7 +311,6 @@ public class customerDao {
 				dto.setSearch_add(rs.getString("search_add"));
 				dto.setSearch_header(rs.getString("search_header"));
 				dto.setSearch_region(rs.getString("search_region"));
-				System.out.println(dto.getSearch_title());
 				dto.setSearch_transport(rs.getString("search_transport"));
 				dto.setSearch_accommodation(rs.getString("search_accommodation"));
 				dto.setSearch_theme(rs.getString("search_theme"));
@@ -328,7 +373,6 @@ public class customerDao {
 				dto.setSearch_add(rs.getString("search_add"));
 				dto.setSearch_header(rs.getString("search_header"));
 				dto.setSearch_region(rs.getString("search_region"));
-				System.out.println(dto.getSearch_title());
 				dto.setSearch_transport(rs.getString("search_transport"));
 				dto.setSearch_accommodation(rs.getString("search_accommodation"));
 				dto.setSearch_theme(rs.getString("search_theme"));
