@@ -148,7 +148,7 @@ public class BoardDao {
        * daoSearch_theme + ")&&" + "(" + daoSearch_transport + ")&&" + "(" +
        * daoSearch_accommodation + "))";
        */
-      //System.out.println(sql); // 최종 선택된 sql문 출력
+      System.out.println(sql);
 
       try {
          pool = DBConnectionMgr.getInstance();
@@ -172,6 +172,7 @@ public class BoardDao {
             String search_theme   =  rs.getString("search_theme");
             String search_tag =  rs.getString("search_tag");
             String search_header = rs.getString("search_header");
+      
             int board_click = rs.getInt("board_click");
             int board_like = rs.getInt("board_like");
 
@@ -179,6 +180,7 @@ public class BoardDao {
             dto.setUser_id(user_id);
             dto.setUser_nick(user_nick);
             dto.setSearch_title(search_title);
+            System.out.println(dto.getSearch_title());
             dto.setSearch_card(search_card);
             dto.setSearch_add(search_add);
             dto.setSearch_region(search_region);
@@ -187,10 +189,14 @@ public class BoardDao {
             dto.setSearch_theme(search_theme);
             dto.setSearch_tag(search_tag);
             dto.setSearch_header(search_header);
+            System.out.println(dto.getSearch_header());
             dto.setBoard_click(board_click);
             dto.setBoard_like(board_like);
+            
+            
 
             board.add(dto);
+
          }
       } catch (Exception err) {
          System.out.println("실패 :" + err);

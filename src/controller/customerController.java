@@ -23,25 +23,27 @@ public class customerController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		String param = req.getParameter("param");
-		BasicBean basic = null;
-		String url ="";
+		BasicBean basic = BasicBean.newInstance();
+		
+		  basic.setPath(req, "upload");
+	      basic.setMax(50 * 1024 * 1024);
+	      basic.setEncType("UTF-8");
+	      basic.setMulti(req);
+	    String url ="";
 		Command command = null;
-		FactoryCommand factory = FactoryCommand.newInstance();
+		
+		String param = req.getParameter("param");
 		
 		if(param == null){
-			basic = BasicBean.newInstance();
-			basic.setPath(req, "upload");
-		    basic.setMax(50 * 1024 * 1024);
-		    basic.setEncType("UTF-8");
-		    basic.setMulti(req);
-		    
 			param = basic.getMulti().getParameter("param");
-			command = factory.createCommand(param,basic.getMulti());
 		}  else{
 			param = req.getParameter("param");
-			command = factory.createCommand(param,null);
 		}
+		
+		
+		
+		FactoryCommand factory = FactoryCommand.newInstance();
+		command = factory.createCommand(param,basic.getMulti());
 		
 		try {
 			url = (String)command.processCommand(req, resp);

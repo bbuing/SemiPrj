@@ -14,6 +14,7 @@ public class FactoryCommand {
 	}
 
 	public Command createCommand(String param, MultipartRequest multi) {
+		System.out.println(param);
 		if (param.equals("getBoard")) {
 			return new GetBoardCommand();
 		} else if (param.equals("join")) {
@@ -54,10 +55,12 @@ public class FactoryCommand {
 			return new customerMymessage();
 		}else if (param.equals("read")) {
 			return new readBoard();
-		}else if(param.equals("write_log")) {
+		}else if(param.equals("post")) {
 			return new customerWrite();
 		}else if(param.equals("save")) {
 			return new customerSave(multi);
+		} else if(param.equals("mylike")) {
+			return new customerMylike();
 		}
 		return null;
 

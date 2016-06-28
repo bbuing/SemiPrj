@@ -51,7 +51,8 @@
 	<input type="hidden" id="token" name="token" />
 	<div class="container">
 		<div id="header" class="row">
-			<jsp:include page="header.jsp"/>
+			<h1>헤더 부분 입니다.</h1>
+			<hr/>
 		</div>
 		<!-- 제목,여행기간을 작성할 상단 부분 -->
 		<div id="title" class="row" class="form-inline col-md-12">

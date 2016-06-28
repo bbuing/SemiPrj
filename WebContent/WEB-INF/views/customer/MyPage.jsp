@@ -27,6 +27,9 @@
 		$("#test3").click(function() { 
 			$("#message").submit();
 		});
+		$("#test4").click(function() { 
+			$("#mylike").submit();
+		});
 	});
 </script>
 <body>
@@ -50,9 +53,9 @@
 				<li><a href="#" id="test1">개인정보수정</a></li>
 				<li><a href="#" id="test2">내가 작성한 글</a></li>
 				<li><a href="#" id="test3">알림</a></li>
-				<li><a href="#" id="test4">팔로잉</a></li>
-				<li><a href="#" id="test5">팔로우</a></li>
-				<li><a href="#" id="test6">좋아요</a></li>
+				<li><a href="#" id="test4">좋아요</a></li>
+				<li><a href="#" id="test5">팔로잉</a></li>
+				<li><a href="#" id="test6">팔로우</a></li>
 			</ul>
 			</nav>
 		</form>
@@ -74,13 +77,18 @@
 
 	<form action="customer.do" id="mywrite" method="post">
 		<input type="hidden" name="param" value="mywrite" /> <input
-			type="hidden" name="mywrite" value="<%=emp.getUser_email()%>" /> <input
+			type="hidden" name="mywrite" value="<%=emp.getUser_id()%>" /> <input
 			type="hidden" name="page" value="Mywrite.jsp" />
 	</form>
 	<form action="customer.do" id="message" method="post">
 		<input type="hidden" name="param" value="message" /> <input
-			type="hidden" name="message" value="<%=emp.getUser_email()%>" /> <input
+			type="hidden" name="message" value="<%=emp.getUser_id()%>" /> <input
 			type="hidden" name="page" value="MyMessage.jsp" />
+	</form>
+	<form action="customer.do" id="mylike" method="post">
+		<input type="hidden" name="param" value="mylike" /> <input
+			type="hidden" name="mylike" value="<%=emp.getUser_id()%>" /> <input
+			type="hidden" name="page" value="Mylike.jsp" />
 	</form>
 
 </body>

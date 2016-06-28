@@ -388,9 +388,6 @@
 			}));
 		});
 	}
-	function fnSetTag() {
-		
-	}
 	jQuery(document).ready(function($){
 		$("#title_img_btn").click(function(){
 			$("#title_img").click();

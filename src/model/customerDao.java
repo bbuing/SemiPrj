@@ -232,9 +232,12 @@ public class customerDao {
 				emp.setUser_hearder(rs.getString("user_hearder"));
 				emp.setUser_id(rs.getString("user_id"));
 			}
+			rs.close();
+			pstmt.close();
+			conn.close();
 		} catch (Exception e) {
 			System.out.println("로그인 실패 : " + e);
-		} finally{if(pool != null) pool.freeConnection(conn, pstmt, rs);}
+		}
 	return emp;
 	}
 	// 내가 작성한 글 찾기, 작성한 글이 몇개가 있을지 모르기 때문에 벡터로 받아옴
@@ -243,18 +246,13 @@ public class customerDao {
 		try {
 			pool=DBConnectionMgr.getInstance();
             conn= pool.getConnection();
-            String sql = "Select *  From searchtbl JOIN boardtbl ON searchtbl.board_num = "
-            		+ "boardtbl.board_num JOIN usernicktbl ON searchtbl.user_id = usernicktbl.user_id where "
-            		+ "((replace(search_title, ' ','')) || (search_card like '%%')) && "
-            		+ "((search_region like '%서울%' ||search_region like '%인천%' ||search_region like '%경기도%' ||search_region like '%충청북도%' ||search_region like '%충청남도%' ||search_region like '%경상북도%' ||search_region like '%경상남도%' ||search_region like '%전라북도%' ||search_region like '%전라남도%' ||search_region like '%강원도%' ||search_region like '%제주도%' ) && "
-            		+ "(search_theme like '%커플%' ||search_theme like '%가족%' ||search_theme like '%단체%' ||search_theme like '%나홀로%' ||search_theme like '%힐링%' ||search_theme like '%저가여행%' ||search_theme like '%바다%' ||search_theme like '%계곡%' ||search_theme like '%등산%' ||search_theme like '%반려동물%' )&&"
-            		+ "(search_transport like '%자동차%' ||search_transport like '%비행기%' ||search_transport like '%배%' ||search_transport like '%기차%' ||search_transport like '%지하철%' ||search_transport like '%버스%' ||search_transport like '%도보%' )&&"
-            		+ "(search_accommodation like '%펜션%' ||search_accommodation like '%호텔%' ||search_accommodation like '%모텔%' ||search_accommodation like '%게스트하우스%' ))"
-            		+ " && searchtbl.user_id = (select user_id from userTbl where user_email = ?)";
+            String sql = "SELECT  A.*, b.user_nick ,c.board_click, C.board_like  FROM searchTbl AS A INNER JOIN userTbl AS B INNER JOIN boardTbl AS C  ON A.user_id = ? && B.user_id = ? && c.user_id = ?";
             		
            
             pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mywrite);
+			pstmt.setString(2, mywrite);
+			pstmt.setString(3, mywrite);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				BoardDto dto = new BoardDto();
@@ -265,8 +263,9 @@ public class customerDao {
 				dto.setSearch_title(rs.getString("search_title"));
 				dto.setSearch_card(rs.getString("search_card"));
 				dto.setSearch_add(rs.getString("search_add"));
-				
+				dto.setSearch_header(rs.getString("search_header"));
 				dto.setSearch_region(rs.getString("search_region"));
+				System.out.println(dto.getSearch_title());
 				dto.setSearch_transport(rs.getString("search_transport"));
 				dto.setSearch_accommodation(rs.getString("search_accommodation"));
 				dto.setSearch_theme(rs.getString("search_theme"));
@@ -304,5 +303,47 @@ public class customerDao {
 			System.out.println("로그아웃 실패 : " + e);
 		}
 	return emp;
+	}
+	//내가 좋아요 누른 글 검색
+	public Vector<BoardDto> coutomerMylike(String mywrite) {
+		Vector<BoardDto> board = new Vector<BoardDto>();
+		try {
+			pool=DBConnectionMgr.getInstance();
+            conn= pool.getConnection();
+            String sql = "SELECT  A.*, b.user_nick ,c.board_click, C.board_like, D.user_like_board  FROM searchTbl AS A INNER JOIN userTbl AS B INNER JOIN boardTbl AS C INNER JOIN likeTbl AS D ON A.board_num = D.user_like_board = C.board_num && B.user_id = ? && D.user_id = ?";
+            
+           
+            pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mywrite);
+			pstmt.setString(2, mywrite);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BoardDto dto = new BoardDto();
+				dto.setBoard_num(rs.getString("board_num"));
+				
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_nick(rs.getString("user_nick"));
+				dto.setSearch_title(rs.getString("search_title"));
+				dto.setSearch_card(rs.getString("search_card"));
+				dto.setSearch_add(rs.getString("search_add"));
+				dto.setSearch_header(rs.getString("search_header"));
+				dto.setSearch_region(rs.getString("search_region"));
+				System.out.println(dto.getSearch_title());
+				dto.setSearch_transport(rs.getString("search_transport"));
+				dto.setSearch_accommodation(rs.getString("search_accommodation"));
+				dto.setSearch_theme(rs.getString("search_theme"));
+				dto.setSearch_tag(rs.getString("search_tag"));
+				
+				dto.setBoard_click(rs.getInt("board_click"));
+				dto.setBoard_like(rs.getInt("board_like"));
+				board.add(dto);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("보여주기 뷰 실패 : " + e);
+		}
+	return board;
 	}
 }

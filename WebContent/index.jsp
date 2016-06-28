@@ -140,7 +140,7 @@ margin-left : 400px;
 <body class="body_background">
 
    <div>
-      <jsp:include page="/WEB-INF/views/customer/header.jsp" flush="false" />
+      <jsp:include page="header.jsp" flush="false" />
    </div>
    <div class="container ">
 
@@ -165,8 +165,8 @@ margin-left : 400px;
             %>
          </div>
          <div class="main_link_div col-lg-4">
-            <form method="post" action="write.do">
-               <input type="hidden" name="param" value="write_log" /> 
+            <form method="post" action="customer.do">
+               <input type="hidden" name="param" value="post" /> 
                <input type="submit" class="main_link btn btn-default btn-lg btn_hj" value="다녀왔으니 여행로그로 자랑하러 가기">
             </form>
          </div>

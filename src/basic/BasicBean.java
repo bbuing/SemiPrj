@@ -22,9 +22,6 @@ public class BasicBean {
    public void setPath(HttpServletRequest request, String path){
       this.path=request.getServletContext().getRealPath(path);
    }
-   public String getPath() {
-	   return this.path;
-   }
    public void setMax(int max){
       this.max=max;
    }
