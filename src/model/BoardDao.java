@@ -142,6 +142,7 @@ public class BoardDao {
                + ") && (" + daoSearch_theme + ")&&" + "(" + daoSearch_transport + ")&&" + "(" + daoSearch_accommodation
                + "))";
       }
+      System.out.println(sql);
 
       /*
        * sql = "select * from board  where ((" + daoSearch_region + ") && (" +
