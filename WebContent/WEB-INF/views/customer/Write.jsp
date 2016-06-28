@@ -182,7 +182,7 @@
   						src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAmsGI_8BQcslfyf8AnFmSvi0zESELZWOQ
     					&q=%EC%84%9C%EC%9A%B8%20%EA%B4%91%ED%99%94%EB%AC%B8"  allowfullscreen>
 					</iframe>
-					<button type="button" class="btn btn-info" style="float:right">저장</button>
+					<button class="btn btn-info" style="float:right">저장</button>
 					</div>
 				</div>
 			</div>
