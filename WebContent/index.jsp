@@ -376,7 +376,7 @@ margin-left : 400px;
                
                   out.println("<div class='ui card'>");
                            out.println("<div class='image'>");
-                           out.print("<img src='/semiProject/upload/");%><%=dto2.getSearch_header()%><% out.println("'>");
+                           out.print("<img src='/semiProject/upload/");%><%=dto2.getBoard_num()%><%out.print("/");%><%=dto2.getSearch_header()%><% out.println("'>");
                            out.println("</div>");
                            out.println("<div class='content'>");
                            out.println("<div id = 'title' class='header' style='font-family :Nanum;'>");
