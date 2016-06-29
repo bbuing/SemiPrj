@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="model.customerDto"%>
+<%@page import="model.User_Dto"%>
 <%@page import="dbcp.DBConnectionMgr"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -39,7 +39,7 @@
 	}
 </script>
 <body>
-	<% customerDto emp = (customerDto) session.getAttribute("list"); %>
+	<% User_Dto emp = (User_Dto) session.getAttribute("list"); %>
 	<% if (emp == null || emp.getUser_name() == null || emp.getUser_profile() == null) { %>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -51,7 +51,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<img class="img" src="3.png" style="height: 40px; width: 40px">
+				<img class="img" src="upload/semiDummy/3.png" style="height: 40px; width: 40px">
 				<a class="navbar-brand" href="#" id="gomain">Criss+Cross</a>
 				 
 			</div>
@@ -86,7 +86,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<img class="img" src="3.png" style="height: 40px; width: 40px">
+				<img class="img" src="upload/semiDummy/3.png" style="height: 40px; width: 40px">
 				<a class="navbar-brand" href="#" id="gomain">Criss+Cross</a>
 			</div>
 
@@ -110,17 +110,17 @@
 	<%
 		}
 	%>
-	<form action="customer.do" id="logform" method="post">
+	<form action="user.do" id="logform" method="post">
 		<input type="hidden" name="param" value="log" />
 	</form>
-	<form id="logoutform" method="post" action="customer.do">
+	<form id="logoutform" method="post" action="user.do">
 		<input type="hidden" name="param" value="logout" />
 		<input type="hidden" name="out" value="0" />
 	</form>
-	<form action="customer.do" id="gomainform" method="post">
+	<form action="user.do" id="gomainform" method="post">
 		<input type="hidden" name="param" value="main" />
 	</form>
-	<form action="customer.do" id="gomypageform" method="post">
+	<form action="user.do" id="gomypageform" method="post">
 		<input type="hidden" name="param" value="mypage" />
 	</form>
 </body>

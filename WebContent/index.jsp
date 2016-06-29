@@ -165,8 +165,8 @@ margin-left : 400px;
             %>
          </div>
          <div class="main_link_div col-lg-4">
-            <form method="post" action="customer.do">
-               <input type="hidden" name="param" value="post" /> 
+            <form method="post" action="write.do">
+               <input type="hidden" name="param" value="write_log" /> 
                <input type="submit" class="main_link btn btn-default btn-lg btn_hj" value="다녀왔으니 여행로그로 자랑하러 가기">
             </form>
          </div>
@@ -376,7 +376,7 @@ margin-left : 400px;
                
                   out.println("<div class='ui card'>");
                            out.println("<div class='image'>");
-                           out.print("<img src='/semiProject/upload/");%><%=dto2.getSearch_header()%><% out.println("'>");
+                           out.print("<img src='/semiProject/upload/");%><%=dto2.getBoard_num()%><%out.print("/");%><%=dto2.getSearch_header()%><% out.println("'>");
                            out.println("</div>");
                            out.println("<div class='content'>");
                            out.println("<div id = 'title' class='header' style='font-family :Nanum;'>");

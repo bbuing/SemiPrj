@@ -41,11 +41,20 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>join</servlet-name>
-		<servlet-class>controller.customerController</servlet-class>
+		<servlet-name>user</servlet-name>
+		<servlet-class>controller.UserController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>join</servlet-name>
-		<url-pattern>/customer.do</url-pattern>
+		<servlet-name>user</servlet-name>
+		<url-pattern>/user.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>write</servlet-name>
+		<servlet-class>controller.WriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>write</servlet-name>
+		<url-pattern>/write.do</url-pattern>
 	</servlet-mapping>
 </web-app>
