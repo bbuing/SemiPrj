@@ -184,7 +184,7 @@ margin-left : 400px;
             String[] param_region = request.getParameterValues("region");
             String[] param_theme = request.getParameterValues("theme");
             String[] param_transport = request.getParameterValues("transport");
-            String[] param_accommodation = request.getParameterValues("accommodation");
+            String[] param_stay = request.getParameterValues("stay");
 
             if (keyField == null) {
                keyField = "title+content";
@@ -201,8 +201,8 @@ margin-left : 400px;
             if (param_transport == null) {
                param_transport = new String[] { "자동차", "비행기", "배", "기차", "지하철", "버스", "도보" };
             }
-            if (param_accommodation == null) {
-               param_accommodation = new String[] { "펜션", "호텔", "모텔", "게스트하우스" };
+            if (param_stay == null) {
+               param_stay = new String[] { "펜션", "호텔", "모텔", "게스트하우스" };
             }
       %>
 
@@ -327,19 +327,19 @@ margin-left : 400px;
             <div class="col-sm-3" style="text-align: left">
                <label class="r_chk"><h4>숙박</h4></label>
                <div class="r_chk checkbox">
-                  <label><input type="checkbox" name="accommodation"
+                  <label><input type="checkbox" name="stay"
                      value="펜션">펜션</label>
                </div>
                <div class="r_chk checkbox">
-                  <label><input type="checkbox" name="accommodation"
+                  <label><input type="checkbox" name="stay"
                      value="호텔">호텔</label>
                </div>
                <div class="r_chk checkbox">
-                  <label><input type="checkbox" name="accommodation"
+                  <label><input type="checkbox" name="stay"
                      value="모텔">모텔</label>
                </div>
                <div class="r_chk checkbox">
-                  <label><input type="checkbox" name="accommodation"
+                  <label><input type="checkbox" name="stay"
                      value="게스트하우스">게스트하우스</label>
                </div>
             </div>
@@ -352,7 +352,7 @@ margin-left : 400px;
       <%
          BoardDao dao = new BoardDao();
             Vector<BoardDto> list = (Vector<BoardDto>) dao.getBoardList(keyField, keyWord, param_region,
-                  param_theme, param_transport, param_accommodation);
+                  param_theme, param_transport, param_stay);
 
             //Vector<BoardDto>  list = (Vector<BoardDto>)session.getAttribute("list");
       %>
@@ -376,13 +376,13 @@ margin-left : 400px;
                
                   out.println("<div class='ui card'>");
                            out.println("<div class='image'>");
-                           out.print("<img src='/semiProject/upload/");%><%=dto2.getBoard_num()%><%out.print("/");%><%=dto2.getSearch_header()%><% out.println("'>");
+                           out.print("<img src='/semiProject/upload/");%><%=dto2.getBoard_num()%><%out.print("/");%><%=dto2.getBoard_header()%><% out.println("'>");
                            out.println("</div>");
                            out.println("<div class='content'>");
                            out.println("<div id = 'title' class='header' style='font-family :Nanum;'>");
                %>
                <a href="read.do?param=read&board_num=<%=dto2.getBoard_num() %> " style="color:000000">
-               <%=dto2.getSearch_title().replace(keyWord.toUpperCase(),
+               <%=dto2.getBoard_title().replace(keyWord.toUpperCase(),
                         "<span style='background:yellow'>" + keyWord.toUpperCase() + "</span>")%></a>
                <%
                   out.println("</div>");

@@ -26,8 +26,8 @@ public class GetBoardCommand implements Command {
 		String[] region = req.getParameterValues("region");
 		String[] theme = req.getParameterValues("theme");
 		String[] transport = req.getParameterValues("transport");
-		String[] accommodation = req.getParameterValues("accommodation");
-		Vector<BoardDto> list = dao.getBoardList(keyField, keyWord,region, theme, transport, accommodation);
+		String[] stay = req.getParameterValues("stay");
+		Vector<BoardDto> list = dao.getBoardList(keyField, keyWord,region, theme, transport, stay);
 	
 
 		req.setAttribute("list", list);
