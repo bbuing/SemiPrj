@@ -140,7 +140,7 @@ margin-left : 400px;
 <body class="body_background">
 
    <div>
-      <jsp:include page="/WEB-INF/views/customer/header.jsp" flush="false" />
+      <jsp:include page="header.jsp" flush="false" />
    </div>
    <div class="container ">
 

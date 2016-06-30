@@ -9,7 +9,7 @@
 <%@page import="model.CardDto"%>
 <%@page import="model.AddDto"%>
 <%@page import="model.ReplyDto"%>
-<%@page import="model.customerDto"%>
+<%@page import="model.User_Dto"%>
 <%
 	
 %>

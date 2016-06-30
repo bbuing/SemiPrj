@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="model.Emailchk"%>
+<%@page import="model.User_Emailchk"%>
 <%@page import="dbcp.DBConnectionMgr"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -14,7 +14,7 @@
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 <%
-	Emailchk manager = Emailchk.getInstance();
+User_Emailchk manager = User_Emailchk.getInstance();
 	String eamil = request.getParameter("chk");
 	int check = manager.confirmId(eamil); // confirmId 결과인 숫자 1 또는 -1을 받아옴
 %>
