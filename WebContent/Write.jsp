@@ -45,7 +45,28 @@
 	height:385px; 
 	display:none;
 }
+#theme_order {
+	width : 500px;
+	height : 60px;
+	overflow: auto;
+}
+#board_rtts_title span{
+	width:110px;
+}
+#board_rtts {
+	height: 150px;
+	display:none;
+	z-index: 3;
+}
+#board_rtts_contents div {
+	width:110px;
+	height:100px;
+	overflow:auto;
+}
 </style>
+<script>
+
+</script>
 </head>
 <body>
 	<input type="hidden" id="token" name="token" />
@@ -73,76 +94,61 @@
 						<input type="hidden" id="title_img_name" name="title_img_name" />
 						<input class="form-control input-lg" type="text" size="60" name="title" placeholder="타이틀을 넣어주세요" /><br/><br/>
 						<input class="form-control input-lg" type="text" size="60" name="date" placeholder="여행 기간 입력" /><br/><br/>
-						<h3><span class="form-control label label-default">작성 순서</span></h3>
-						<div id="theme_order">
-							<span class="round-icon"><a href="#section0" class="type_top"><span class="glyphicon glyphicon-send"></span></a></span>							
-						</div>
 					</form>
-					<div id="board_stay" class="form-horizontal" style="height:150px; overflow: auto;">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 서울
+					<h3><span class="form-control label label-default">작성 순서</span></h3>
+					<div id="theme_order">
+						<span class="round-icon"><a href="#section0" class="type_top"><span class="glyphicon glyphicon-send"></span></a></span>							
+					</div>
+					<button class="btn btn-info btn-xs" onClick="show_rtts(this)">게시물 설정</button>
+				</div>
+				<div id="board_rtts" class="form-group">
+					<div id="board_rtts_title" class="form-inline">
+						<span class="form-group"><h4>지역</h4></span>
+						<span class="form-group"><h4>테마</h4></span>
+						<span class="form-group"><h4>교통수단</h4></span>
+						<span class="form-group"><h4>숙박</h4></span>
+					</div>
+					<div id="board_rtts_contents" class="form-inline">
+						<div id="board_region" class="form-group">
+							<center><input type="checkbox" class="region" value="서울"/> 서울&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="region" value="서울"/> 인천&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="region" value="서울"/> 경기도&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="region" value="서울"/> 충청북도</center>
+							<center><input type="checkbox" class="region" value="서울"/> 충청남도</center>
+							<center><input type="checkbox" class="region" value="서울"/> 경상북도</center>
+							<center><input type="checkbox" class="region" value="서울"/> 경상남도</center>
+							<center><input type="checkbox" class="region" value="서울"/> 전라북도</center>
+							<center><input type="checkbox" class="region" value="서울"/> 전라남도</center>
+							<center><input type="checkbox" class="region" value="서울"/> 제주도&nbsp;&nbsp;&nbsp;</center>
 						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 인천
+						<div id="board_theme" class="form-group">
+							<center><input type="checkbox" class="theme" value="서울"/> 커플&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 가족&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 단체&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 나홀로&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 힐링&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 저가여행</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 바다&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 계곡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 등산&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="theme" value="서울"/> 반려동물</center>
 						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 경기도
+						<div id="board_transport" class="form-group">
+							<center><input type="checkbox" class="transport" value="서울"/> 자동차</center>
+							<center><input type="checkbox" class="transport" value="서울"/> 비행기</center>
+							<center><input type="checkbox" class="transport" value="서울"/> 배&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="transport" value="서울"/> 기차&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="transport" value="서울"/> 지하철</center>
+							<center><input type="checkbox" class="transport" value="서울"/> 버스&nbsp;&nbsp;&nbsp;</center>
+							<center><input type="checkbox" class="transport" value="서울"/> 도보&nbsp;&nbsp;&nbsp;</center>
 						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 충청북도
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 충청남도
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 경상북도
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 경상남도
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 전라북도
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 전라남도
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="region" value="서울" /> 제주도
+						<div id="board_stay" class="form-group">
+							<center><input type="checkbox" class="stay" value="서울"/> 펜션</center>
+							<center><input type="checkbox" class="stay" value="서울"/> 호텔</center>
+							<center><input type="checkbox" class="stay" value="서울"/> 모텔</center>
+							<center><input type="checkbox" class="stay" value="서울"/> 게스트하우스</center>
 						</div>
 					</div>
-						&nbsp;&nbsp;테마&nbsp;&nbsp;
-						<select name="select">
-							<option value="null"></option>
-							<option value="커플">커플</option>
-							<option value="가족">가족</option>
-							<option value="단체">단체</option>
-							<option value="나홀로">나홀로</option>
-							<option value="힐링">힐링</option>
-							<option value="저가여행">저가여행</option>
-							<option value="바다">바다</option>
-							<option value="계곡">계곡</option>
-							<option value="등산">등산</option>
-							<option value="반려동물">반려동물</option>
-						</select>
-						&nbsp;&nbsp;교통수단&nbsp;&nbsp;
-						<select name="select">
-							<option value="null"></option>
-							<option value="자동차">자동차</option>
-							<option value="비행기">비행기</option>
-							<option value="배">배</option>
-							<option value="기차">기차</option>
-							<option value="지하철">지하철</option>
-							<option value="버스">버스</option>
-							<option value="도보">도보</option>
-						</select>
-						&nbsp;&nbsp;숙박&nbsp;&nbsp;
-						<select name="select">
-							<option value="null"></option>
-							<option value="펜션">펜션</option>
-							<option value="호텔">호텔</option>
-							<option value="모텔">모텔</option>
-							<option value="게스트하우스">게스트하우스</option>
-						</select>
 				</div>
 			</div>
 		</div>

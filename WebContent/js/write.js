@@ -48,6 +48,18 @@
         // no support
         } else { alert("미리보기 기능은 IE, Chrome만 제공됩니다.");}
     }
+    // 게시물 설정을 보였다 숨겼다 하는 함수
+	function show_rtts(btn) {
+		var status = $("#board_rtts").css("display");
+		if(status == "none") {
+			$("#board_rtts").css("display","inline");
+			$(btn).text("숨기기");
+		}
+		else {
+			$("#board_rtts").css("display","none");
+			$(btn).text("게시물 설정");
+		}
+	}
 	// 테마(본문)을 추가하는 함수
 	function addTheme(theme_list) {
 		var divTheme = $(theme_list).parent();
@@ -107,12 +119,13 @@
 			setSpy();
 		});
 	}
-	// 테마(본문)을 지우는 함수
+	// 테마(본문)을 지우는 함수, 이때 작성 순서에 아이콘도 지워준다
 	function removeTheme(theme) {
 		var cardIdx = $("#theme_list").children().index($(theme).parent())/2;
 		$(theme).parent().next().remove();
 		$(theme).parent().remove();
 		$("#card_btn").children().eq(cardIdx).remove();
+		$("#theme_order").children().eq(cardIdx).remove();
 	}
 	
 	/*function addCard() {
@@ -388,8 +401,9 @@
 			}));
 		});
 	}
-	function fnSetTag() {
-		
+	// 현재 게시글의 지역,교통수단 등의 기본정보를 form에 담아주는 함수
+	function fnSetinfo() {
+		var region = $(".region")
 	}
 	jQuery(document).ready(function($){
 		$("#title_img_btn").click(function(){
@@ -514,6 +528,7 @@
 		$("#submit").click(function(){
 			fnSetTheme();
 			fnSetOrder();
+			fnSetinfo();
 			$("#upload").submit();
 		});
 	});
