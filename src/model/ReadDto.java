@@ -14,6 +14,10 @@ public class ReadDto {
 	private String board_header;
 	private String board_period;
 	private String board_tag;
+	private String board_region;
+	private String board_transport;
+	private String board_stay;
+	private String board_theme;
 	private String board_click;
 	private String board_like;
 	
@@ -75,6 +79,30 @@ public class ReadDto {
 	}
 	public void setBoard_period(String board_period) {
 		this.board_period = board_period;
+	}
+	public String getBoard_region() {
+		return board_region;
+	}
+	public void setBoard_region(String board_region) {
+		this.board_region = board_region;
+	}
+	public String getBoard_transport() {
+		return board_transport;
+	}
+	public void setBoard_transport(String board_transport) {
+		this.board_transport = board_transport;
+	}
+	public String getBoard_stay() {
+		return board_stay;
+	}
+	public void setBoard_stay(String board_stay) {
+		this.board_stay = board_stay;
+	}
+	public String getBoard_theme() {
+		return board_theme;
+	}
+	public void setBoard_theme(String board_theme) {
+		this.board_theme = board_theme;
 	}
 	public String getBoard_click() {
 		return board_click;

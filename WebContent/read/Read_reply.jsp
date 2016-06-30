@@ -14,66 +14,6 @@
 	
 %>
 
-<script>
-	$(document).ready(function() {
-		$('#submitBtn').click(function() {
-			$.ajax({
-				type : "post",
-				url : "reply.do", //this is my servlet
-				//data: "input=" +$('#ip').val()+"&output="+$('#op').val(),
-				success : function() {
-					$('#include-reply').load("read/Read_reply.jsp");
-				}
-			});
-		});
-
-	});
-	/*
-	 $(document).ready(function() {
-	 $('#replyForm').submit(function () {
-	 location.reload();
-	 });
-	 });
-	 */
-	/*
-	 $(document).ready(function() {
-	 $("#replyForm").submit(function() {
-	 var options = {
-	
-
-	 success: function(html) {
-	 $("#include-reply").replaceWith($('#include-reply', $(html)));
-	 },
-
-	 url: "http://localhost:8080/semiProject/read/Read-reply.jsp"
-	 }
-
-	 $(this).ajaxSubmit(options);
-	 return false;
-	 });
-	 });
-	 */
-	/*
-	 $(document).ready(function() {
-	 $('#submitBtn').click(function(e) {
-	 e.preventDefault();
-	 var param = $("#param").val();
-	 var value ='param='+ajaxdata;
-	
-	 $.ajax({
-	 url: "reply.do",
-	 type: "post",
-	 data: value,
-	 cache: false,
-	 success: function(data) {
-	 //$("#country").val('');
-	 $("#replyForm").html(data).slideDown('slow');
-	 }
-	 });
-	 });
-	 });
-	 */
-</script>
 
 
 
@@ -96,7 +36,7 @@
 								<div class="reply-section">
 									<div class="reply-profile profile-shadow">
 										<img class="img-circle" alt="" width="30" height="30"
-											src="${reply.reply_user_profile}" />
+											src="upload/${reply.reply_user_profile}" />
 									</div>
 									<div class="reply-info">
 										<div class="reply-user">${reply.reply_user_nick}</div>
