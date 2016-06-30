@@ -273,7 +273,15 @@ public class User_Dao {
 				emp.setUser_profile(rs.getString("user_profile"));
 				emp.setUser_header(rs.getString("user_header"));
 				emp.setUser_id(rs.getString("user_id"));
-				
+			}
+			
+			String sqlLike = "SELECT * from likeTbl where user_id=?";
+			pstmt = conn.prepareStatement(sqlLike);
+			pstmt.setString(1, emp.getUser_id());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				//로그인한 사용자가 like한 board list
+				emp.setUser_likelist(rs.getString("user_like_board"));
 			}
 			rs.close();
 			pstmt.close();

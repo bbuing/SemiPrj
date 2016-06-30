@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Vector;
+
 public class User_Dto {
 	private String user_pw;
 	private String user_name;
@@ -13,6 +15,9 @@ public class User_Dto {
 	private String user_header;
 	private String user_interest;
 	private String user_id;
+	
+	private Vector<String> user_likelist = new Vector<String>();
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -87,5 +92,10 @@ public class User_Dto {
 		this.user_header = user_header;
 	}
 	
-	
+	public Vector<String> getUser_likelist() {
+		return user_likelist;
+	}
+	public void setUser_likelist(String user_like_board) {
+		user_likelist.add(user_like_board);
+	}
 }
