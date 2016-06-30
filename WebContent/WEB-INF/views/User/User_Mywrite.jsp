@@ -19,6 +19,15 @@
 .body {
 	margin-top: 80px
 }
+.icon_like{
+   width:15px;
+   height:15px;
+}
+.icon_tag{
+   margin-right:30px;
+   width:25px;
+   height:25px;
+}
 </style>
 </head>
 <body>
@@ -34,102 +43,96 @@
 				<div class="ui link cards centered">
 				
 <form method="post" action="read.do">
-		<input type="hidden" name="param" value="read" />
-		<div class="demo-card">
-			<div class="card-deck-wrapper">
-				<div class="ui link cards centered">
-					<%
-						if (list == null) {
-								out.println("작성한 글이 없습니다.");
-							} else {
-								for (int i = 0; i < list.size(); i++) {
-									BoardDto dto2 = (BoardDto) list.get(i);
-					%>
+      <input type="hidden" name="param" value="read" />
+      <div class="demo-card">
+         <div class="card-deck-wrapper">
+            <div class="ui link cards centered">
+               <%
+                  if (list == null) {
+                        out.println("검색결과가 없습니다.");
+                     } else {
+                        for (int i = 0; i < list.size(); i++) {
+                           BoardDto dto2 = (BoardDto) list.get(i);
+               %>
 
-					<%
-					
-						out.println("<div class='ui card'>");
-									out.println("<div class='image'>");
-									out.print("<img src='/semiProject/upload/");%><%=dto2.getBoard_num() %><% out.print("/");%><%=dto2.getSearch_header()%><% out.println("'>");
-									out.println("</div>");
-									out.println("<div class='content'>");
-									out.println("<div id = 'title' class='header' style='font-family :Nanum;'>");
-					%>
-					<a href="read.do?param=read&board_num=<%=dto2.getBoard_num() %> " style="color:000000">
-					</a>
-					<%
-						out.println("</div>");
-									out.println(
-											"<div id='content' style ='height : 200px;text-overflow:ellipsis; overflow:hidden; font-family :Nanum;' class='description'>");
-					%>
+               <%
+               
+                  out.println("<div class='ui card'>");
+                           out.println("<div class='image'>");
+                           out.print("<img src='/semiProject/upload/");%><%=dto2.getBoard_num()%><%out.print("/");%><%=dto2.getBoard_header()%><% out.println("'>");
+                           out.println("</div>");
+                           out.println("<div class='content'>");
+                           out.println("<div id = 'title' class='header' style='font-family :Nanum;'>");
+               %>
+               <a href="read.do?param=read&board_num=<%=dto2.getBoard_num() %> " style="color:000000">
+               <%=dto2.getBoard_title()%></a>
+               <%
+                  out.println("</div>");
+                           out.println(
+                                 "<div id='content' style ='height : 200px;text-overflow:ellipsis; overflow:hidden; font-family :Nanum;' class='description'>");
+               %>
 
-					<%=dto2.getSearch_card()%>
+               <%=dto2.getSearch_card()%>
 
-					<%
-						out.println("</div>");
-									out.println("</div>");
+               <%
+                  out.println("</div>");
+                           out.println("</div>");
 
-									out.println("<div class='extra content'>");
-									String[] array = dto2.getSearch_tag().split(",");
+                           out.println("<div class='extra content'>");
+                           String[] array = dto2.getSearch_tag().split(",");
 
-									for (int j = 0; j < array.length; j++) {
-					%>
-					<a href="#" style="color: blue;" id="<%=array[j]%>" class="tags">
-						</a>
+                           for (int j = 0; j < array.length; j++) {
+               %>
+               <a href="#" style="color: blue;" id="<%=array[j]%>" class="tags">
+                  <%=array[j]%></a>
 
-					<%
-						}
-									out.println("<hr>");
-									out.println("<div style='margin-left: 20px; text-align:center' >");
-									%>
-									<%
-									out.print("<a href='read.do?param=read&board_num=");
-									%>
-									<%=dto2.getBoard_num()%><%out.print("#section1'><img src='images/transport.png' class='icon_tag'></a>");%>
-									<%
-									out.print("<a href='read.do?param=read&board_num=");
-									%>
-									<%=dto2.getBoard_num()%><%out.print("#section2'><img src='images/home.png' class='icon_tag'></a>");%>
-									<%
-									out.print("<a href='read.do?param=read&board_num=");
-									%>
-									<%=dto2.getBoard_num()%><%out.print("#section3'><img src='images/pen.png' class='icon_tag'></a>");%>
-									<%
-									out.print("<a href='read.do?param=read&board_num=");
-									%>
-									<%=dto2.getBoard_num()%><%out.print("#section4'><img src='images/food.png' class='icon_tag'></a>");%><%
-									out.println("</div>");
-									out.println("<hr/>");
-									out.println("<div>");
-									out.println("<img src='img/like.png' class='icon_like'>");
-					%>
-					좋아요 <%=dto2.getBoard_like()%>개
+               <%
+                  }
+                           out.println("<hr>");
+                           out.println("<div style='margin-left: 20px; text-align:center' >");
+                           %>
+                           <%
+                           out.print("<a href='read.do?param=read&board_num=");%><%=dto2.getBoard_num()%><%out.print("#section1'><img src='images/transport.png' class='icon_tag'></a>");%>
+                           <%
+                           out.print("<a href='read.do?param=read&board_num=");%>%=dto2.getBoard_num()%><%out.print("#section2'><img src='images/home.png' class='icon_tag'></a>");%>
+                           <%
+                           out.print("<a href='read.do?param=read&board_num=");%><%=dto2.getBoard_num()%><%out.print("#section3'><img src='images/pen.png' class='icon_tag'></a>");%>
+                           <%
+                           out.print("<a href='read.do?param=read&board_num=");%><%=dto2.getBoard_num()%><%out.print("#section4'><img src='images/food.png' class='icon_tag'></a>");%><%
+                           out.println("</div>");
+                           out.println("<hr/>");
+                           out.println("<div>");
+                           out.println("<img src='img/like.png' class='icon_like'>");
+               %>
+               좋아요 <%=dto2.getBoard_like()%>개
 
-					<%
-						out.println("<div style='text-align : right'>");
-					%>
-					작성자 :
-					<%=dto2.getUser_nick()%>
+               <%
+                  out.println("<div style='text-align : right'>");
+               %>
+               작성자 :
+               <%=dto2.getUser_nick()%>
 
-					<%
-						out.println("</div>");
-									out.println("</div>");
-									out.println("</div>");
-									out.println("</div>");
+               <%
+                  out.println("</div>");
+                           out.println("</div>");
+                           out.println("</div>");
+                           out.println("</div>");
 
-								}							}
-						
-					%>
+                        }
 
-				</div>
-			</div>
+                     }
+                  
+               %>
+
+            </div>
+         </div>
 
 
 
-		</div>
+      </div>
 </form>
 
-	</div>
+   </div>
 
 
 </body>

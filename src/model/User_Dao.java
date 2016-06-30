@@ -289,7 +289,7 @@ public class User_Dao {
 		try {
 			pool=DBConnectionMgr.getInstance();
             conn= pool.getConnection();
-            String sql = "SELECT  A.*, b.user_nick ,c.board_click, C.board_like  FROM searchTbl AS A INNER JOIN userTbl AS B INNER JOIN boardTbl AS C  ON A.user_id = ? && B.user_id = ? && c.user_id = ?";
+            String sql = "SELECT  A.*, b.user_id, b.user_nick ,c.search_tag, C.search_card , C.search_add FROM boardTbl AS A INNER JOIN userTbl AS B INNER JOIN searchTbl AS C  ON A.user_id = ? && B.user_id = ? && c.user_id = ?;";
             		
            
             pstmt = conn.prepareStatement(sql);
@@ -300,19 +300,17 @@ public class User_Dao {
 			while (rs.next()) {
 				BoardDto dto = new BoardDto();
 				dto.setBoard_num(rs.getString("board_num"));
-				
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setUser_nick(rs.getString("user_nick"));
-				dto.setSearch_title(rs.getString("search_title"));
+				dto.setBoard_title(rs.getString("board_title"));
 				dto.setSearch_card(rs.getString("search_card"));
 				dto.setSearch_add(rs.getString("search_add"));
-				dto.setSearch_header(rs.getString("search_header"));
-				dto.setSearch_region(rs.getString("search_region"));
-				dto.setSearch_transport(rs.getString("search_transport"));
-				dto.setSearch_accommodation(rs.getString("search_accommodation"));
-				dto.setSearch_theme(rs.getString("search_theme"));
+				dto.setBoard_header(rs.getString("board_header"));
+				dto.setBoard_region(rs.getString("board_region"));
+				dto.setBoard_transport(rs.getString("board_transport"));
+				dto.setBoard_stay(rs.getString("board_stay"));
+				dto.setBoard_theme(rs.getString("board_theme"));
 				dto.setSearch_tag(rs.getString("search_tag"));
-				
 				dto.setBoard_click(rs.getInt("board_click"));
 				dto.setBoard_like(rs.getInt("board_like"));
 				board.add(dto);
@@ -362,19 +360,17 @@ public class User_Dao {
 			while (rs.next()) {
 				BoardDto dto = new BoardDto();
 				dto.setBoard_num(rs.getString("board_num"));
-				
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setUser_nick(rs.getString("user_nick"));
-				dto.setSearch_title(rs.getString("search_title"));
+				dto.setBoard_title(rs.getString("board_title"));
 				dto.setSearch_card(rs.getString("search_card"));
 				dto.setSearch_add(rs.getString("search_add"));
-				dto.setSearch_header(rs.getString("search_header"));
-				dto.setSearch_region(rs.getString("search_region"));
-				dto.setSearch_transport(rs.getString("search_transport"));
-				dto.setSearch_accommodation(rs.getString("search_accommodation"));
-				dto.setSearch_theme(rs.getString("search_theme"));
+				dto.setBoard_header(rs.getString("board_header"));
+				dto.setBoard_region(rs.getString("board_region"));
+				dto.setBoard_transport(rs.getString("board_transport"));
+				dto.setBoard_stay(rs.getString("board_stay"));
+				dto.setBoard_theme(rs.getString("board_theme"));
 				dto.setSearch_tag(rs.getString("search_tag"));
-				
 				dto.setBoard_click(rs.getInt("board_click"));
 				dto.setBoard_like(rs.getInt("board_like"));
 				board.add(dto);
