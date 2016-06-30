@@ -73,19 +73,43 @@
 						<input type="hidden" id="title_img_name" name="title_img_name" />
 						<input class="form-control input-lg" type="text" size="60" name="title" placeholder="타이틀을 넣어주세요" /><br/><br/>
 						<input class="form-control input-lg" type="text" size="60" name="date" placeholder="여행 기간 입력" /><br/><br/>
-						지역&nbsp;&nbsp;
-						<select name="select">
-							<option value="null"></option>
-							<option value="서울">서울</option>
-							<option value="인천">인천</option>
-							<option value="경기도">경기도</option>
-							<option value="충청북도">충청북도</option>
-							<option value="충청남도">충청남도</option>
-							<option value="경상북도">경상북도</option>
-							<option value="경상남도">경상남도</option>
-							<option value="전라북도">전라북도</option>
-							<option value="전라남도">전라남도</option>
-						</select>
+						<h3><span class="form-control label label-default">작성 순서</span></h3>
+						<div id="theme_order">
+							<span class="round-icon"><a href="#section0" class="type_top"><span class="glyphicon glyphicon-send"></span></a></span>							
+						</div>
+					</form>
+					<div id="board_stay" class="form-horizontal" style="height:150px; overflow: auto;">
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 서울
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 인천
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 경기도
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 충청북도
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 충청남도
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 경상북도
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 경상남도
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 전라북도
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 전라남도
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="form-control" name="region" value="서울" /> 제주도
+						</div>
+					</div>
 						&nbsp;&nbsp;테마&nbsp;&nbsp;
 						<select name="select">
 							<option value="null"></option>
@@ -119,11 +143,6 @@
 							<option value="모텔">모텔</option>
 							<option value="게스트하우스">게스트하우스</option>
 						</select>
-						<h3><span class="form-control label label-default">작성 순서</span></h3>
-						<div id="theme_order">
-							<span class="round-icon"><a href="#section0" class="type_top"><span class="glyphicon glyphicon-send"></span></a></span>							
-						</div>
-					</form>
 				</div>
 			</div>
 		</div>

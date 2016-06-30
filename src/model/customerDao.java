@@ -31,7 +31,7 @@ public class customerDao {
 			emp.setUser_name(rs.getString("user_name"));
 			emp.setUser_email(rs.getString("user_email"));
 			emp.setUser_profile(rs.getString("user_profile"));
-			emp.setUser_hearder(rs.getString("user_hearder"));
+			emp.setUser_hearder(rs.getString("user_header"));
 			pstmt.close();
 			conn.close();
 		} catch (Exception err) {
@@ -46,7 +46,7 @@ public class customerDao {
 			try {
 			pool=DBConnectionMgr.getInstance();
             conn= pool.getConnection();
-            String sql = "insert into userTbl(user_name, user_nick,user_email,user_pw,user_question,user_answer,user_phone,user_interest, user_profile,user_hearder, user_lev) values(?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into userTbl(user_name, user_nick,user_email,user_pw,user_question,user_answer,user_phone,user_interest, user_profile,user_header, user_lev) values(?,?,?,?,?,?,?,?,?,?,?)";
     		pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, emp.getUser_name());
 			pstmt.setString(2, emp.getUser_nick());
@@ -87,7 +87,7 @@ public class customerDao {
 				emp.setUser_phone(rs.getString("user_phone"));
 				emp.setUser_interest(rs.getString("user_interest"));
 				emp.setUser_profile(rs.getString("user_profile"));
-				emp.setUser_hearder(rs.getString("user_hearder"));
+				emp.setUser_hearder(rs.getString("user_header"));
 			}
 			rs.close();
 			pstmt.close();
@@ -102,7 +102,7 @@ public class customerDao {
 		try {
 			pool=DBConnectionMgr.getInstance();
             conn= pool.getConnection();
-            String sql = "update userTbl set user_nick = ?,user_pw= ?,user_question = ?,user_answer = ?, user_phone = ?, user_interest = ?, user_profile = ?, user_hearder=? where user_email=?";
+            String sql = "update userTbl set user_nick = ?,user_pw= ?,user_question = ?,user_answer = ?, user_phone = ?, user_interest = ?, user_profile = ?, user_header=? where user_email=?";
             pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, emp.getUser_nick());
 			pstmt.setString(2, emp.getUser_pw());
@@ -118,7 +118,7 @@ public class customerDao {
 			emp.setUser_name(rs.getString("user_name"));
 			emp.setUser_email(rs.getString("user_email"));
 			emp.setUser_profile(rs.getString("user_profile"));
-			emp.setUser_hearder(rs.getString("user_hearder"));
+			emp.setUser_hearder(rs.getString("user_header"));
 			pstmt.close();
 			conn.close();
 		} catch (Exception err) {
@@ -219,7 +219,7 @@ public class customerDao {
 		try {
 			pool=DBConnectionMgr.getInstance();
             conn= pool.getConnection();
-            String sql = "select user_name, user_email, user_profile, user_hearder, user_id from userTbl where user_email=? and user_pw=?";
+            String sql = "select user_name, user_email, user_profile, user_header, user_id from userTbl where user_email=? and user_pw=?";
             pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, emp.getUser_email());
 			pstmt.setString(2, emp.getUser_pw());
@@ -229,7 +229,7 @@ public class customerDao {
 				emp.setUser_name(rs.getString("user_name"));
 				emp.setUser_email(rs.getString("user_email"));
 				emp.setUser_profile(rs.getString("user_profile"));
-				emp.setUser_hearder(rs.getString("user_hearder"));
+				emp.setUser_hearder(rs.getString("user_header"));
 				emp.setUser_id(rs.getString("user_id"));
 			}
 		} catch (Exception e) {
