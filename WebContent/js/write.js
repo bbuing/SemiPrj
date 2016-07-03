@@ -1,4 +1,4 @@
-/**
+ /**
  * 	write.js
  */
 // 타이틀 이미지를 미리보기 하는 함수
@@ -403,7 +403,39 @@
 	}
 	// 현재 게시글의 지역,교통수단 등의 기본정보를 form에 담아주는 함수
 	function fnSetinfo() {
-		var region = $(".region")
+		var region = $(".region:checked");
+		var theme = $(".theme:checked");
+		var trans = $(".transport:checked");
+		var stay = $(".stay:checked");
+		
+		$(region).each(function(){
+			$("#upload").append("<input>",{
+				type: "hidden",
+				name: "region",
+				value: $(this).val()
+			})
+		});
+		$(theme).each(function(){
+			$("#upload").append("<input>",{
+				type: "hidden",
+				name: "theme",
+				value: $(this).val()
+			})
+		});
+		$(trans).each(function(){
+			$("#upload").append("<input>",{
+				type: "hidden",
+				name: "trans",
+				value: $(this).val()
+			})
+		});
+		$(stay).each(function(){
+			$("#upload").append("<input>",{
+				type: "hidden",
+				name: "stay",
+				value: $(this).val()
+			})
+		});
 	}
 	jQuery(document).ready(function($){
 		$("#title_img_btn").click(function(){
@@ -529,6 +561,6 @@
 			fnSetTheme();
 			fnSetOrder();
 			fnSetinfo();
-			$("#upload").submit();
+			//$("#upload").submit();
 		});
 	});

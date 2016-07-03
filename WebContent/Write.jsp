@@ -94,8 +94,8 @@
 						<input type="hidden" id="title_img_name" name="title_img_name" />
 						<input class="form-control input-lg" type="text" size="60" name="title" placeholder="타이틀을 넣어주세요" /><br/><br/>
 						<input class="form-control input-lg" type="text" size="60" name="date" placeholder="여행 기간 입력" /><br/><br/>
+						<input class="form-control input-lg" type="text" size="60" name="date" placeholder="#태그를 입력 하세요" /><br/><br/>
 					</form>
-					<h3><span class="form-control label label-default">작성 순서</span></h3>
 					<div id="theme_order">
 						<span class="round-icon"><a href="#section0" class="type_top"><span class="glyphicon glyphicon-send"></span></a></span>							
 					</div>
