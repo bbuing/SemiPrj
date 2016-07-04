@@ -45,9 +45,39 @@ public class User_Save implements Command{
 			String title_img = multi.getParameter("title_img_name");
 			String title = multi.getParameter("title");
 			String period = multi.getParameter("date");
-			String[] selects = multi.getParameterValues("select");
+			// 선택된 체크박스로부터 넘겨 받은 값들을 DB에 저장하기 위해 ','로 구분해서 합쳐준다.
+			String region[] = multi.getParameterValues("region");
+			String theme[] = multi.getParameterValues("theme");
+			String trans[] = multi.getParameterValues("trans");
+			String stay[] = multi.getParameterValues("stay");
+			
+			String db_region = "", db_theme = "", db_trans = "", db_stay = "";
+			for(int i=0; i<region.length; i++) {
+				db_region += region[i];
+				if(i != region.length-1)
+					db_region += ",";
+			}
+			for(int i=0; i<theme.length; i++) {
+				db_theme += theme[i];
+				if(i != theme.length-1)
+					db_theme += ",";
+			}
+			for(int i=0; i<trans.length; i++) {
+				db_trans += trans[i];
+				if(i != trans.length-1)
+					db_trans += ",";
+			}
+			for(int i=0; i<stay.length; i++) {
+				db_stay += stay[i];
+				if(i != stay.length-1)
+					db_stay += ",";
+			}
+			System.out.println(db_region);
+			System.out.println(db_theme);
+			System.out.println(db_trans);
+			System.out.println(db_stay);
 			// 1. boardTbl에 지금 작성한 데이터를 입력한다.
-			sql = "INSERT into boardTbl(user_id,board_title,board_status,board_date,board_header,board_period,board_tag,board_click,board_like) values(?,?,'upload',now(),?,?,?,0,0)";
+			sql = "INSERT into boardTbl(user_id,board_title,board_status,board_date,board_header,board_period,board_tag,board_region,board_theme,board_transport,board_stay,board_click,board_like) values(?,?,'upload',now(),?,?,?,?,?,?,?,0,0)";
 			stmt = con.prepareStatement(sql);
 			
 			stmt.setString(1, user_id);
@@ -55,6 +85,10 @@ public class User_Save implements Command{
 			stmt.setString(3, title_img);
 			stmt.setString(4, period);
 			stmt.setString(5, "");
+			stmt.setString(6, db_region);
+			stmt.setString(7, db_theme);
+			stmt.setString(8, db_trans);
+			stmt.setString(9, db_stay);
 			
 			stmt.executeUpdate();
 			// 2. 지금 작성한 글의 게시물 번호를 가져온다.
@@ -80,22 +114,7 @@ public class User_Save implements Command{
 			stmt.setString(5, search_text);
 			stmt.setString(6, "");
 			stmt.setString(7, "");
-			for(int i=0; i<selects.length; i++) {
-				switch(i) {
-					case 0:
-						stmt.setString(8, selects[i]);
-						break;
-					case 1:
-						stmt.setString(9, selects[i]);
-						break;
-					case 2:
-						stmt.setString(10, selects[i]);
-						break;
-					case 3:
-						stmt.setString(11, selects[i]);
-						break;
-				}
-			}
+			
 			stmt.executeUpdate();
 			// 4. cardTbl에 본문 내용을 입력
 			for(int i=0; i<Cards.length; i++) {
