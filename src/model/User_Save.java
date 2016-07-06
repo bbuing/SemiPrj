@@ -45,11 +45,12 @@ public class User_Save implements Command{
 			String title_img = multi.getParameter("title_img_name");
 			String title = multi.getParameter("title");
 			String period = multi.getParameter("date");
+			String tag = multi.getParameter("tag");
 			// 선택된 체크박스로부터 넘겨 받은 값들을 DB에 저장하기 위해 ','로 구분해서 합쳐준다.
-			String region[] = multi.getParameterValues("region");
-			String theme[] = multi.getParameterValues("theme");
-			String trans[] = multi.getParameterValues("trans");
-			String stay[] = multi.getParameterValues("stay");
+			String region[] = multi.getParameterValues("board_region");
+			String theme[] = multi.getParameterValues("board_theme");
+			String trans[] = multi.getParameterValues("board_trans");
+			String stay[] = multi.getParameterValues("board_stay");
 			
 			String db_region = "", db_theme = "", db_trans = "", db_stay = "";
 			for(int i=0; i<region.length; i++) {
@@ -72,10 +73,6 @@ public class User_Save implements Command{
 				if(i != stay.length-1)
 					db_stay += ",";
 			}
-			System.out.println(db_region);
-			System.out.println(db_theme);
-			System.out.println(db_trans);
-			System.out.println(db_stay);
 			// 1. boardTbl에 지금 작성한 데이터를 입력한다.
 			sql = "INSERT into boardTbl(user_id,board_title,board_status,board_date,board_header,board_period,board_tag,board_region,board_theme,board_transport,board_stay,board_click,board_like) values(?,?,'upload',now(),?,?,?,?,?,?,?,0,0)";
 			stmt = con.prepareStatement(sql);
@@ -99,21 +96,14 @@ public class User_Save implements Command{
 			int board_num = 0;
 			if(rs.next())
 				board_num = rs.getInt("board_num");
-			
 			// 3. 검색을 위해 게시글의 일부를 searchTbl에 입력
-			sql = "INSERT into searchTbl(board_num,user_id,search_title,search_header,search_card,search_add,search_tag,search_region,search_transport,search_accommodation,search_theme) values(?,?,?,?,?,?,?,?,?,?,?)";
+			sql = "INSERT into searchTbl(board_num,user_id,search_card,search_add,search_tag) values(?,?,?,?,?)";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, board_num);
 			stmt.setString(2, user_id); // user_id
 			stmt.setString(3, title);	
 			stmt.setString(4, title_img);
-			String search_text = "";
-			for(int i=0; i<Cards.length; i++) {
-				search_text += Cards[i];
-			}
-			stmt.setString(5, search_text);
-			stmt.setString(6, "");
-			stmt.setString(7, "");
+			stmt.setString(5, tag);
 			
 			stmt.executeUpdate();
 			// 4. cardTbl에 본문 내용을 입력

@@ -411,28 +411,28 @@
 		$(region).each(function(){
 			$("#upload").append($("<input>",{
 				type: "hidden",
-				name: "region",
+				name: "board_region",
 				value: $(this).val()
 			}));
 		});
 		$(theme).each(function(){
 			$("#upload").append($("<input>",{
 				type: "hidden",
-				name: "theme",
+				name: "board_theme",
 				value: $(this).val()
 			}));
 		});
 		$(trans).each(function(){
 			$("#upload").append($("<input>",{
 				type: "hidden",
-				name: "trans",
+				name: "board_trans",
 				value: $(this).val()
 			}));
 		});
 		$(stay).each(function(){
 			$("#upload").append($("<input>",{
 				type: "hidden",
-				name: "stay",
+				name: "board_stay",
 				value: $(this).val()
 			}));
 		});
